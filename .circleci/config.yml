@@ -29,10 +29,14 @@ jobs:
   deploy:
     docker:
       - image: mwienk/docker-lftp
+    working_directory: ~/repo
     steps:
       - run:
           name: list folders
           command: ls
+      - run:
+          name: verify variable
+          command: echo $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
       - run:
           name: copy folder to remote ftp
           command: lftp -e "set ftp:ssl-allow false; mirror -eRnv . helloworld; exit;" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
