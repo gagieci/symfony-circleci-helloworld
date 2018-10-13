@@ -40,4 +40,4 @@ jobs:
         command: ls
       - run:
         name: copy folder to remote ftp
-        lftp -e "set ftp:ssl-allow false; mirror -eRnv ~/repo helloworld; exit;" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
+        command: lftp -e "set ftp:ssl-allow false; mirror -eRnv ~/repo helloworld; exit;" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
