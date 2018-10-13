@@ -39,7 +39,7 @@ jobs:
           command: echo $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
       - run:
           name: copy folder to remote ftp
-          command: lftp -e "set ftp:ssl-allow false; mirror -eRnv . ~/test; exit;" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
+          command: lftp -e "set ftp:ssl-allow true; mirror -eRnv . ~/test; exit;" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
 
 
 workflows:
