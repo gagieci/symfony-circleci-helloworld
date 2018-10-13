@@ -30,13 +30,3 @@ jobs:
       - run: 
         name: Run Unit tests
         command: vendor/bin/phpunit
-  deploy:
-    docker:
-      - image: mwienk/docker-lftp
-    steps:      
-      - run: 
-        name: list folders
-        command: ls
-      - run:
-        name: copy folder to remote ftp
-        command: lftp -e "set ftp:ssl-allow false; mirror -eRnv ~/repo helloworld; exit;" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
